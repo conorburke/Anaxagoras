@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
 import Landing from './Landing';
-import Second from './Second';
+import SenatorList from './SenatorList';
 import Navbar from './Navbar';
 
 class App extends Component {
@@ -13,7 +13,7 @@ class App extends Component {
           <div>
             <Navbar/>
             <Route exact path="/" component={Landing} />
-            <Route exact path="/second" component={Second} />
+            <Route exact path="/senatorList" component={SenatorList} />
           </div>
         </BrowserRouter>
       </div>
