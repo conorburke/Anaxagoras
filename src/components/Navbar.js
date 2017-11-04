@@ -12,7 +12,7 @@ export default class Navbar extends Component {
             className="left brand-logo"
             style={{margin: '0px 15px'}}
           >
-            Science My Senator
+            Anaxagoras
           </Link>
           <ul className="right">
             <li><Link to='/senatorList'>All Senators</Link></li>

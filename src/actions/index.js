@@ -1,6 +1,6 @@
 import { FETCH_SENATORS } from './types';
 
-export const fetchSenators = () => async dispatch => {
+export const fetchSenators = () => dispatch => {
     fetch('https://api.propublica.org/congress/v1/115/senate/members.json', {
         method: 'GET',
         headers: {
