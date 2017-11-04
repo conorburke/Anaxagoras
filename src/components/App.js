@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
 
 import Landing from './Landing';
 import SenatorList from './SenatorList';
 import Navbar from './Navbar';
 
 class App extends Component {
+  componentDidMount() {
+    this.props.fetchSenators();
+  }
+
   render() {
     return (
       <div className="container">
@@ -21,4 +27,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(null, actions)(App);

@@ -1,0 +1,1 @@
+export const FETCH_SENATORS = 'fetch_senators';
