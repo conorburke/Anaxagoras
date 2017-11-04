@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import * as actions from '../actions';
 
+import * as actions from '../actions';
 import Landing from './Landing';
 import SenatorList from './SenatorList';
 import Navbar from './Navbar';
@@ -27,4 +27,8 @@ class App extends Component {
   }
 }
 
-export default connect(null, actions)(App);
+function mapStateToProps({ senators }) {
+  return { senators };
+}
+
+export default connect(mapStateToProps, actions)(App);
