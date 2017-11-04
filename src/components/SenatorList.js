@@ -1,27 +1,19 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
+import * as actions from '../actions';
 
-
-export default class SenatorList extends Component {
+class SenatorList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      senators: []
+      currentSenators: []
     }
   }
 
-  componentDidMount() {
-    const list =[];
-    fetch('https://api.propublica.org/congress/v1/115/senate/members.json', {
-      method: 'GET',
-      headers: {
-        'X-API-Key': process.env.REACT_APP_PROPUBLICA_API_KEY
-      }
-    }).then(response => response.json())
-      .then(data => {
-        console.log(data);
-        data.results[0].members.map(senator => list.push(
+  renderSenators() {
+    return (this.setState({currentSenators: 
+      this.props.senators.map(senator => 
           <li key={senator.id}>
             <div className="row">
               <div className="col m6 offset-m3">
@@ -39,20 +31,28 @@ export default class SenatorList extends Component {
                 </div>
               </div>
             </div>
-          </li>));
-        console.log(list);
-        this.setState({senators: list});
-      });
+          </li>
+        )}
+      )
+    );
+  }
+
+  componentDidMount() {
+    this.renderSenators();
   }
 
   render() {
     return (
       <div>
         <h2 style={{textAlign: 'center'}}>Current Senators</h2>
-        <ul style={{margin: '0 auto'}}>{this.state.senators}</ul>
+        <ul style={{margin: '0 auto'}}>{this.state.currentSenators}</ul>
       </div>
     );
   }
+} 
+
+function mapStateToProps({ senators }) {
+  return { senators };
 }
 
-
+export default connect(mapStateToProps, actions)(SenatorList);
