@@ -20,6 +20,7 @@ export default class SenatorList extends Component {
       }
     }).then(response => response.json())
       .then(data => {
+        console.log(data);
         data.results[0].members.map(senator => list.push(
           <li key={senator.id}>
             <div className="row">
@@ -32,8 +33,8 @@ export default class SenatorList extends Component {
                     <p>Twitter: {senator.twitter_account}</p>
                   </div>
                   <div className="card-action">
-                    <a href={senator.url}>Website</a>
-                    <a href={senator.contact_form}>Contact</a>
+                    <a href={senator.url} target="_blank">Website</a>
+                    <a href={senator.contact_form} target="_blank">Contact</a>
                   </div>
                 </div>
               </div>
