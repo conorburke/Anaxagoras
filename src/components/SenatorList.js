@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import * as actions from '../actions';
+// import * as actions from '../actions';
 
 class SenatorList extends Component {
   constructor(props) {
@@ -51,8 +51,13 @@ class SenatorList extends Component {
   }
 } 
 
-function mapStateToProps({ senators }) {
-  return { senators };
+// function mapStateToProps(state) {
+//   return {senators: state.senators};
+// }
+
+//es6
+function mapStateToProps({senators}) {
+  return {senators};
 }
 
-export default connect(mapStateToProps, actions)(SenatorList);
+export default connect(mapStateToProps)(SenatorList);
